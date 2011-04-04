@@ -9,5 +9,6 @@ public class MeterologiskMain {
 	public static void main(String[] args) {
 		//Oppretter ett GUI objekt hvor alt av grensesnitt ligger.
 		MeterologiskGUI mm = new MeterologiskGUI();
+		//Hva er det jeg skriver forno mon tro
 	}
 }
