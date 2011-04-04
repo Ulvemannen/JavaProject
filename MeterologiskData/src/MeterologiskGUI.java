@@ -5,7 +5,7 @@ import javax.swing.*;
 
 public class MeterologiskGUI {
 	/**Grafiskgrensesnitt klasse for programmet.
-	 * 
+	 * Fredrik skal hjem snart
 	 */
 	
 	//Deklarerer GUI objekter som man skal ha  tilgang til.
