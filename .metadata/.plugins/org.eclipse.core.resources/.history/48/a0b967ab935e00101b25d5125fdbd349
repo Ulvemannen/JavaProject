@@ -1,0 +1,88 @@
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+
+public class MeterologiskGUI {
+	/**Grafiskgrensesnitt klasse for programmet.
+	 * 
+	 */
+	
+	//Deklarerer GUI objekter som man skal ha  tilgang til.
+	private Register reg;
+	private JFrame frame;
+	private JButton registrerData,kommuneGjennomsnittKnapp;
+	private JTextField fylkefelt,kommunefelt,nedbørfelt, maxtempfelt, mintempfelt;
+	private JTextArea utskrift;
+	private static ButtonListener l;
+	
+	public MetrologiskGui(){
+		reg = new Register();
+		registrerData = new JButton("Register");
+		kommuneGjennomsnittKnapp = new JButton("KommuneNedbør");
+		lagLyttere();
+		frame = new JFrame("MetroGui");
+		frame.add(new JLabel("Fylke"));
+		frame.add(fylkefelt = new JTextField(15));
+		frame.add(new JLabel("Kommune"));
+		frame.add(kommunefelt = new JTextField(15));
+		frame.add(new JLabel("Nedbør"));
+		frame.add(nedbørfelt = new JTextField(15));
+		frame.add(new JLabel("Maxtemp"));
+		frame.add(maxtempfelt = new JTextField(15));
+		frame.add(new JLabel("Mintemp"));
+		frame.add(mintempfelt = new JTextField(15));
+		frame.add(registrerData);
+		frame.add(kommuneGjennomsnittKnapp);
+		frame.add(utskrift = new JTextArea(30,30));
+		frame.setVisible(true);
+		frame.setLayout(new FlowLayout());
+		frame.setSize(100,100);
+		frame.pack();
+	}
+	private void nyttInnlegg(){
+		/**Registrer en ny hendelse
+		 * 
+		 */
+		int n = Integer.parseInt(nedbørfelt.getText());
+		double max = Double.parseDouble(maxtempfelt.getText());
+		double min = Double.parseDouble(mintempfelt.getText());
+		String k = kommunefelt.getText();
+		String f = fylkefelt.getText();
+		Innlegg i = new Innlegg(n,max,min);
+		reg.LeggtilInnlegg(f,k,i);
+	}
+	private void KommuneGjennomsnitt(){
+		/** Regner ut Kommunenedbørgjennomsnitt.
+		 * 
+		 */
+		String fylke = fylkefelt.getText();
+		String kommune = kommunefelt.getText();
+		int sum = reg.kommunenedbørGjennomsnitt(fylke, kommune);
+		
+		//Legger resultatet til i utskriftsfeltet.
+		utskrift.setText("Sum :"+sum);
+	}
+	private void lagLyttere(){
+		/**Oppretter Lytteobjektene. 
+		 * og knappelyttere.
+		 */
+		
+		l = new ButtonListener();
+		registrerData.addActionListener(l);
+		kommuneGjennomsnittKnapp.addActionListener(l);
+	}
+	private class ButtonListener implements ActionListener{
+		/**Private knappelytterklasse for bruk til menyknapper.
+		 * 
+		 */
+		public void actionPerformed(ActionEvent e) {
+			if(e.getSource() == registrerData){
+				nyttInnlegg();
+			}
+			if(e.getSource() == kommuneGjennomsnittKnapp){
+				KommuneGjennomsnitt();
+			}
+		}
+	}
+}
