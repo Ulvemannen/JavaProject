@@ -8,6 +8,6 @@ public class MeterologiskMain {
 	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		//Oppretter ett GUI objekt hvor alt av grensesnitt ligger.
-		MetrologiskGui mm = new MetrologiskGui();
+		MeterologiskGUI mm = new MeterologiskGUI();
 	}
 }
