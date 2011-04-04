@@ -2,6 +2,7 @@
 public class Innlegg {
 	//Deklarere variabler.
 	//Fredrik
+	//Jonas
 	int nedbør;
 	double mintemp;
 	double maxtemp;
