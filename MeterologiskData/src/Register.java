@@ -74,7 +74,6 @@ public class Register {
 		if(norge.containsKey(f)){
 			@SuppressWarnings("unchecked")
 			HashMap<String,ArrayList> fylke = norge.get(f);
-			fylke
 		}
 			
 		return (sum/antall);
