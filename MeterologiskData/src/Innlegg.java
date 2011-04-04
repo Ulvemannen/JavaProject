@@ -1,8 +1,7 @@
 //Hendelseklassen hvor generell informasjon om hendelsen skal lagres.
 public class Innlegg {
 	//Deklarere variabler.
-	//Fredrik
-	//Jonas
+	//WHAT
 	int nedbør;
 	double mintemp;
 	double maxtemp;
